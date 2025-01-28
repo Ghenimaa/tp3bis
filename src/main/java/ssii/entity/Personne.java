@@ -19,4 +19,6 @@ public class Personne {
     @NonNull
     private String nom;
 
+    // commentaire
+
 }
