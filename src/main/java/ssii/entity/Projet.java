@@ -2,6 +2,7 @@ package ssii.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -9,25 +10,18 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class Personne {
+public class Projet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer matricule;
+    private Integer code;
 
     @NonNull
     private String nom;
 
-    private String prenom;
-    private String poste;
+    private LocalDate debut;
+    private LocalDate fin;
 
-    @ManyToOne
-    @JoinColumn(name = "superieur_id")
-    private Personne superieur;
-
-    @OneToMany(mappedBy = "superieur")
-    private List<Personne> subordonnes;
-
-    @OneToMany(mappedBy = "personne")
+    @OneToMany(mappedBy = "projet")
     private List<Participation> participations;
 }
